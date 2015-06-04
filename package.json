@@ -1,0 +1,31 @@
+{
+  "name": "angular-ui-validate",
+  "version": "1.0.0",
+  "description": "AngularUI ui-validate",
+  "main": "src/validate.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/angular-ui/ui-validate.git"
+  },
+  "keywords": [
+    "angular",
+    "angularjs",
+    "angularui",
+    "angular-ui",
+    "angular",
+    "validation",
+    "validation"
+  ],
+  "author": "AngularUI Team",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/angular-ui/ui-validate/issues"
+  },
+  "homepage": "https://github.com/angular-ui/ui-validate"
+}
