@@ -22,7 +22,7 @@ angular.module('ui.validate',[]).directive('uiValidate', function () {
       var validateFn, validators = {},
           validateExpr = scope.$eval(attrs.uiValidate);
 
-      if (!validateExpr){ return;}
+      if (!validateExpr){ return; }
 
       if (angular.isString(validateExpr)) {
         validateExpr = { validator: validateExpr };
@@ -59,11 +59,9 @@ angular.module('ui.validate',[]).directive('uiValidate', function () {
         ctrl.$parsers.push(validateFn);
       });
 
-      function apply_watch(watch)
-      {
+      function apply_watch(watch) {
           //string - update all validators on expression change
-          if (angular.isString(watch))
-          {
+          if (angular.isString(watch)) {
               scope.$watch(watch, function(){
                   angular.forEach(validators, function(validatorFn){
                       validatorFn(ctrl.$modelValue);
@@ -73,11 +71,9 @@ angular.module('ui.validate',[]).directive('uiValidate', function () {
           }
 
           //array - update all validators on change of any expression
-          if (angular.isArray(watch))
-          {
+          if (angular.isArray(watch)) {
               angular.forEach(watch, function(expression){
-                  scope.$watch(expression, function()
-                  {
+                  scope.$watch(expression, function() {
                       angular.forEach(validators, function(validatorFn){
                           validatorFn(ctrl.$modelValue);
                       });
@@ -87,23 +83,18 @@ angular.module('ui.validate',[]).directive('uiValidate', function () {
           }
 
           //object - update appropriate validator
-          if (angular.isObject(watch))
-          {
-              angular.forEach(watch, function(expression, validatorKey)
-              {
+          if (angular.isObject(watch)) {
+              angular.forEach(watch, function(expression, validatorKey) {
                   //value is string - look after one expression
-                  if (angular.isString(expression))
-                  {
+                  if (angular.isString(expression)) {
                       scope.$watch(expression, function(){
                           validators[validatorKey](ctrl.$modelValue);
                       });
                   }
 
                   //value is array - look after all expressions in array
-                  if (angular.isArray(expression))
-                  {
-                      angular.forEach(expression, function(intExpression)
-                      {
+                  if (angular.isArray(expression)) {
+                      angular.forEach(expression, function(intExpression) {
                           scope.$watch(intExpression, function(){
                               validators[validatorKey](ctrl.$modelValue);
                           });
@@ -113,9 +104,23 @@ angular.module('ui.validate',[]).directive('uiValidate', function () {
           }
       }
       // Support for ui-validate-watch
-      if (attrs.uiValidateWatch){
+      if (attrs.uiValidateWatch) {
           apply_watch( scope.$eval(attrs.uiValidateWatch) );
       }
     }
   };
+})
+.directive('uiAsyncValidate', function() {
+    return {
+        require: 'ngModel',
+        link: function($scope, $element, $attrs, ngModel) {
+            ngModel.$asyncValidators.validation = function(modelValue, viewValue) {
+                return $scope.$eval($attrs.uiAsyncValidate, {
+                    '$modelValue': modelValue,
+                    '$viewValue': viewValue,
+                    '$value': viewValue
+                });
+            }
+        }
+    };
 });
