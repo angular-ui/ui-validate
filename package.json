@@ -31,5 +31,11 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/angular-ui/ui-validate.git"
-  }
+  },
+  "keywords": [
+    "angular",
+    "angular-ui",
+    "validation",
+    "validate"
+  ]
 }
