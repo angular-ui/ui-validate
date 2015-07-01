@@ -37,7 +37,7 @@ describe('uiValidate', function () {
       scope.validate = trueValidator;
       compileAndDigest('<input name="input" ng-model="value" ui-validate="\'validate($value)\'">', scope);
       expect(scope.form.input.$valid).toBeTruthy();
-      expect(scope.form.input.$error).toEqual({validator: false});
+      expect(scope.form.input.$error).toEqual({});
     }));
 
     it('should mark input as invalid if initial model is invalid', inject(function () {
@@ -113,7 +113,7 @@ describe('uiValidate', function () {
       expect(scope.form.input.$error.validator).toBe(true);
       scope.$apply('watchMe=true');
       expect(scope.form.input.$valid).toBe(true);
-      expect(scope.form.input.$error.validator).toBe(false);
+      expect(scope.form.input.$error.validator).toBeUndefined();
     });
 
     it('should watch the string and refire all validators', function () {
@@ -124,8 +124,8 @@ describe('uiValidate', function () {
       expect(scope.form.input.$error.bar).toBe(true);
       scope.$apply('watchMe=true');
       expect(scope.form.input.$valid).toBe(true);
-      expect(scope.form.input.$error.foo).toBe(false);
-      expect(scope.form.input.$error.bar).toBe(false);
+      expect(scope.form.input.$error.foo).toBeUndefined();
+      expect(scope.form.input.$error.bar).toBeUndefined();
     });
 
     it('should watch the all object attributes and each respective validator', function () {
@@ -137,17 +137,17 @@ describe('uiValidate', function () {
       expect(scope.form.input.$error.bar).toBe(true);
       scope.$apply('watchFoo=true');
       expect(scope.form.input.$valid).toBe(false);
-      expect(scope.form.input.$error.foo).toBe(false);
+      expect(scope.form.input.$error.foo).toBeUndefined();
       expect(scope.form.input.$error.bar).toBe(true);
       scope.$apply('watchBar=true');
       scope.$apply('watchFoo=false');
       expect(scope.form.input.$valid).toBe(false);
       expect(scope.form.input.$error.foo).toBe(true);
-      expect(scope.form.input.$error.bar).toBe(false);
+      expect(scope.form.input.$error.bar).toBeUndefined();
       scope.$apply('watchFoo=true');
       expect(scope.form.input.$valid).toBe(true);
-      expect(scope.form.input.$error.foo).toBe(false);
-      expect(scope.form.input.$error.bar).toBe(false);
+      expect(scope.form.input.$error.foo).toBeUndefined();
+      expect(scope.form.input.$error.bar).toBeUndefined();
     });
 
   });
@@ -156,7 +156,7 @@ describe('uiValidate', function () {
     it('should fail if ngModel not present', inject(function () {
       expect(function () {
         compileAndDigest('<input name="input" ui-validate="\'validate($value)\'">', scope);
-      }).toThrow(new Error('No controller: ngModel'));
+      }).toThrow();
     }));
     it('should have no effect if validate expression is empty', inject(function () {
       compileAndDigest('<input ng-model="value" ui-validate="">', scope);
