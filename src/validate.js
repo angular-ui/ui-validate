@@ -88,7 +88,7 @@ angular.module('ui.validate',[])
       if (!validateExpr){ return;}
 
       if (angular.isString(validateExpr)) {
-        validateExpr = { validator: validateExpr };
+        validateExpr = { validatorAsync: validateExpr };
       }
 
       angular.forEach(validateExpr, function (exprssn, key) {
