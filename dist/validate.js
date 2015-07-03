@@ -1,7 +1,7 @@
 /*!
  * angular-ui-validate
  * https://github.com/angular-ui/ui-validate
- * Version: 1.0.0 - 2015-07-02T16:16:08.704Z
+ * Version: 1.1.0 - 2015-07-03T04:23:20.252Z
  * License: MIT
  */
 
