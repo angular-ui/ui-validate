@@ -1,4 +1,4 @@
-# ui-validate [![Build Status](https://travis-ci.org/angular-ui/ui-validate.svg?branch=master)](https://travis-ci.org/angular-ui/ui-validate)
+# ui-validate [![Build Status](https://travis-ci.org/angular-ui/ui-validate.svg?branch=master)](https://travis-ci.org/angular-ui/ui-validate) [![npm version](https://badge.fury.io/js/angular-ui-validate.svg)](http://badge.fury.io/js/angular-ui-validate) [![Bower version](https://badge.fury.io/bo/angular-ui-validate.svg)](http://badge.fury.io/bo/angular-ui-validate) [![Join the chat at https://gitter.im/angular-ui/ui-validate](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/angular-ui/ui-validate?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 General-purpose validator for ngModel.
 
