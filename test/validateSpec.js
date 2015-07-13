@@ -162,4 +162,22 @@ describe('uiValidate', function () {
       compileAndDigest('<input ng-model="value" ui-validate="">', scope);
     }));
   });
+
+  describe('additional scope variables', function () {
+
+    it('should pass name of the field to the scope', function () {
+      scope.validate = function () { return true; };
+      spyOn(scope, 'validate').and.callThrough();
+
+      compileAndDigest('<input name="firstname" ng-model="value" ui-validate="\'validate($name)\'">', scope);
+      expect(scope.validate).toHaveBeenCalledWith('firstname');
+
+      scope.validate.calls.reset();
+
+      compileAndDigest('<input name="lastname" ng-model="value" ui-validate-async="\'validate($name)\'">', scope);
+      expect(scope.validate).toHaveBeenCalledWith('lastname');
+    });
+
+  });
+
 });
