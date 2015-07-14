@@ -1,7 +1,7 @@
 /*!
  * angular-ui-validate
  * https://github.com/angular-ui/ui-validate
- * Version: 1.1.0 - 2015-07-03T04:23:20.252Z
+ * Version: 1.1.0 - 2015-07-13T09:57:54.187Z
  * License: MIT
  */
 
@@ -62,7 +62,8 @@ angular.module('ui.validate',[])
           var expression = scope.$eval(exprssn, {
             '$value': modelValue,
             '$modelValue': modelValue,
-            '$viewValue': viewValue
+            '$viewValue': viewValue,
+            '$name': ctrl.$name
           });
           // Keep support for promises for retrocompatibility
           if (angular.isObject(expression) && angular.isFunction(expression.then)) {
@@ -107,7 +108,8 @@ angular.module('ui.validate',[])
           var expression = scope.$eval(exprssn, {
             '$value': modelValue,
             '$modelValue': modelValue,
-            '$viewValue': viewValue
+            '$viewValue': viewValue,
+            '$name': ctrl.$name
           });
           // Check if it's a promise
           if (angular.isObject(expression) && angular.isFunction(expression.then)) {
