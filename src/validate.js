@@ -28,7 +28,7 @@
  * all validators in ngModel.$validators reports as valid.
  */
 angular.module('ui.validate',[])
-.directive('uiValidate', function($$uiValidateApplyWatch) {
+.directive('uiValidate', ['$$uiValidateApplyWatch', function($$uiValidateApplyWatch) {
 
   return {
     restrict: 'A',
@@ -77,8 +77,8 @@ angular.module('ui.validate',[])
       }
     }
   };
-})
-.directive('uiValidateAsync', function ($$uiValidateApplyWatch, $timeout, $q) {
+}])
+.directive('uiValidateAsync', ['$$uiValidateApplyWatch', '$timeout', '$q', function ($$uiValidateApplyWatch, $timeout, $q) {
 
   return {
     restrict: 'A',
@@ -126,7 +126,7 @@ angular.module('ui.validate',[])
       }
     }
   };
-})
+}])
 .service('$$uiValidateApplyWatch', function() {
     return function(scope, ctrl, watch) {
     

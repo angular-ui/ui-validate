@@ -1,7 +1,7 @@
 /*!
  * angular-ui-validate
  * https://github.com/angular-ui/ui-validate
- * Version: 1.1.0 - 2015-07-13T09:57:54.187Z
+ * Version: 1.1.0 - 2015-07-14T09:04:12.726Z
  * License: MIT
  */
 
@@ -38,7 +38,7 @@
  * all validators in ngModel.$validators reports as valid.
  */
 angular.module('ui.validate',[])
-.directive('uiValidate', function($$uiValidateApplyWatch) {
+.directive('uiValidate', ['$$uiValidateApplyWatch', function($$uiValidateApplyWatch) {
 
   return {
     restrict: 'A',
@@ -87,8 +87,8 @@ angular.module('ui.validate',[])
       }
     }
   };
-})
-.directive('uiValidateAsync', function ($$uiValidateApplyWatch, $timeout, $q) {
+}])
+.directive('uiValidateAsync', ['$$uiValidateApplyWatch', '$timeout', '$q', function ($$uiValidateApplyWatch, $timeout, $q) {
 
   return {
     restrict: 'A',
@@ -136,7 +136,7 @@ angular.module('ui.validate',[])
       }
     }
   };
-})
+}])
 .service('$$uiValidateApplyWatch', function() {
     return function(scope, ctrl, watch) {
     
