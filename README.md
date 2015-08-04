@@ -24,7 +24,7 @@ Load the script files in your application:
 
 ```html
 <script type="text/javascript" src="bower_components/angular/angular.js"></script>
-<script type="text/javascript" src="bower_components/angular-ui-validate/dist/ui-validate.js"></script>
+<script type="text/javascript" src="bower_components/angular-ui-validate/dist/validate.js"></script>
 ```
 
 Add the specific module to your dependencies:
