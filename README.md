@@ -52,11 +52,10 @@ The karma task will try to open Firefox and Chrome as browser in which to run th
 
 ### How to release
 
-Use npm to update version and create a tag, then push to GitHub:
+Use gulp to bump version, build and create a tag. Then push to GitHub:
 
 ````sh
-gulp && git commit . # if necessary, build everything and commit latest changes
-npm version [major | minor | patch] # let npm update package.json and create a tag
+gulp release [--patch|--minor|--major]
 git push --tags origin master # push everything to GitHub
 ````
 
