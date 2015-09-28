@@ -73,7 +73,7 @@ angular.module('ui.validate',[])
 
       // Support for ui-validate-watch
       if (attrs.uiValidateWatch) {
-        $$uiValidateApplyWatch(scope, ctrl, scope.$eval(attrs.uiValidateWatch));
+        $$uiValidateApplyWatch(scope, ctrl, scope.$eval(attrs.uiValidateWatch), attrs.uiValidateWatchObjectEquality);
       }
       if (attrs.uiValidateWatchCollection) {
         $$uiValidateApplyWatchCollection(scope, ctrl, scope.$eval(attrs.uiValidateWatchCollection));
@@ -125,7 +125,7 @@ angular.module('ui.validate',[])
 
       // Support for ui-validate-watch
       if (attrs.uiValidateWatch){
-          $$uiValidateApplyWatch( scope, ctrl, scope.$eval(attrs.uiValidateWatch) );
+          $$uiValidateApplyWatch( scope, ctrl, scope.$eval(attrs.uiValidateWatch), attrs.uiValidateWatchObjectEquality);
       }
       if (attrs.uiValidateWatchCollection) {
         $$uiValidateApplyWatchCollection(scope, ctrl, scope.$eval(attrs.uiValidateWatchCollection));
