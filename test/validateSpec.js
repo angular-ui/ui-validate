@@ -116,6 +116,26 @@ describe('uiValidate', function () {
       expect(scope.form.input.$error.validator).toBeUndefined();
     });
 
+    it('should watch the object deeply and refire the single validator', function () {
+      scope.watchMe = { test: false };
+      compileAndDigest('<input name="input" ng-model="value" ui-validate="\'watchMe.test==true\'" ui-validate-watch="\'watchMe\'" ui-validate-watch-object-equality="true">', scope);
+      expect(scope.form.input.$valid).toBe(false);
+      expect(scope.form.input.$error.validator).toBe(true);
+      scope.$apply('watchMe.test=true');
+      expect(scope.form.input.$valid).toBe(true);
+      expect(scope.form.input.$error.validator).toBeUndefined();
+    });
+
+    it('should watch the array and refire the single validator', function () {
+      scope.watchMe = [];
+      compileAndDigest('<input name="input" ng-model="value" ui-validate="\'watchMe.length > 0\'" ui-validate-watch-collection="\'watchMe\'">', scope);
+      expect(scope.form.input.$valid).toBe(false);
+      expect(scope.form.input.$error.validator).toBe(true);
+      scope.$apply('watchMe.push(1)');
+      expect(scope.form.input.$valid).toBe(true);
+      expect(scope.form.input.$error.validator).toBeUndefined();
+    });
+
     it('should watch the string and refire all validators', function () {
       scope.watchMe = false;
       compileAndDigest('<input name="input" ng-model="value" ui-validate="{foo:\'validateWatch(watchMe)\',bar:\'validateWatch(watchMe)\'}" ui-validate-watch="\'watchMe\'">', scope);
