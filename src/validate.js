@@ -65,7 +65,7 @@ angular.module('ui.validate',[])
             // Return as valid for now. Validity is updated when promise resolves.
             return true;
           } else {
-            return expression;
+            return !!expression; // Transform 'undefined' to false (to avoid corrupting the NgModelController and the FormController)
           }
         };
         ctrl.$validators[key] = validateFn;
