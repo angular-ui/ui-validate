@@ -33,6 +33,18 @@ Add the specific module to your dependencies:
 angular.module('myApp', ['ui.validate', ...])
 ```
 
+Or using npm, webpack and es6 import
+```sh
+npm install --save angular-ui-validate
+```
+
+Don't add script tags in your html page. instead
+```javascript
+import uiValidate from 'angular-ui-validate'
+
+angular.module('myApp', [uiValidate, ...])
+```
+
 ## Development
 
 We use Karma and jshint to ensure the quality of the code.  The easiest way to run these checks is to use grunt:
